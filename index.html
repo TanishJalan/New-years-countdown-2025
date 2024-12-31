@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Countdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: #333;
+            text-align: center;
+        }
+        .countdown {
+            font-size: 2em;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown">
+        <h1>Countdown to New Year 2025</h1>
+        <p id="timer">Calculating...</p>
+    </div>
+    <script>
+        function updateCountdown() {
+            const newYear = new Date("January 1, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = newYear - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerText = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+            } else {
+                document.getElementById("timer").innerText = "Happy New Year 2025! 🎉";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
